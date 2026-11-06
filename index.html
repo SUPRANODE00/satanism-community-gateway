@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="en">
- content="A community gateway for sharing personal perspectives and creative styles.">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="A community gateway for sharing personal perspectives and creative styles.">
   <title>Community Gateway</title>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
-<body>
+<body data-theme="equilibrium">
   <header class="site-header">
     <a class="brand" href="#" aria-label="Community Gateway home">COMMUNITY GATEWAY</a>
     <a class="header-link" href="#join">Create a profile</a>
@@ -26,15 +30,15 @@
       <p class="eyebrow">Choose a direction</p>
       <h2 id="styles-title">Featured styles</h2>
       <div class="style-grid">
-        <article class="style-card">
+        <article class="style-card" data-style-select="Equilibrium">
           <h3>Equilibrium</h3>
           <p>A considered, balanced approach to symbolism and personal meaning.</p>
         </article>
-        <article class="style-card">
+        <article class="style-card" data-style-select="Nocturnal Torch">
           <h3>Nocturnal Torch</h3>
           <p>A night-inspired visual identity centered on individual expression.</p>
         </article>
-        <article class="style-card">
+        <article class="style-card" data-style-select="Make it your own">
           <h3>Make it your own</h3>
           <p>Describe a style that reflects your interpretation and creative work.</p>
         </article>
@@ -46,8 +50,7 @@
         <p class="eyebrow">Profile preview</p>
         <h2 id="join-title">Introduce yourself</h2>
         <p class="form-note">
-          This demo runs in your browser. Your information and logo are not sent
-          to a server or saved as an account.
+          This demo runs in your browser. Saved profiles stay strictly local to your browser storage.
         </p>
 
         <form id="profile-form">
@@ -57,9 +60,9 @@
 
           <label for="style">Profile style</label>
           <select id="style" name="style">
-            <option>Equilibrium</option>
-            <option>Nocturnal Torch</option>
-            <option>Make it your own</option>
+            <option value="Equilibrium">Equilibrium</option>
+            <option value="Nocturnal Torch">Nocturnal Torch</option>
+            <option value="Make it your own">Make it your own</option>
           </select>
 
           <label for="bio">Biography and perspective</label>
@@ -71,12 +74,15 @@
           <input id="logo" name="logo" type="file"
                  accept="image/png,image/jpeg,image/webp,image/gif">
 
-          <button class="button" type="submit">Update preview</button>
+          <div class="form-actions">
+            <button class="button" type="submit">Save profile local</button>
+            <button class="button button-secondary" type="button" id="clear-profile">Clear local data</button>
+          </div>
           <p id="form-message" class="form-message" role="status"></p>
         </form>
       </div>
 
-      <aside class="preview" aria-label="Profile preview card">
+      <aside class="preview" id="profile-card-preview" aria-label="Profile preview card">
         <div class="preview-logo" id="logo-preview">Your logo</div>
         <p class="eyebrow" id="preview-style">Equilibrium</p>
         <h3 id="preview-name">Your display name</h3>
